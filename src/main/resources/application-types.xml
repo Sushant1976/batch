@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="american" format="json">
+      <types:shape format="weave" example="examples/test.json"><![CDATA[%dw 2.0
+
+type american = Array<{|  PlaneType: String,   Code: String,   DepartureDate: String,   Origin: String,   Price: Number {"typeId": "int"},   Emptyseats: Number {"typeId": "int"},   Departure: String,   ID: Number {"typeId": "int"},   Airline: String,   TotalSeats: Number {"typeId": "int"}|}> {"example": "[{\\\"PlaneType\\\":\\\"Boeing 787\\\",\\\"Code\\\":\\\"rree0001\\\",\\\"DepartureDate\\\":\\\"2016-01-20T00:00:00\\\",\\\"Origin\\\":\\\"MUA\\\",\\\"Price\\\":541,\\\"Emptyseats\\\":0,\\\"Departure\\\":\\\"LAX\\\",\\\"ID\\\":1,\\\"Airline\\\":\\\"American Airlines\\\",\\\"TotalSeats\\\":200}]"}
+
+]]></types:shape>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#ce3f679c-6c21-4605-bafb-70fadb2178a3">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="american"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>
